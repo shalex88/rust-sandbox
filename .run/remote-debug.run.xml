@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="remote-debug" type="RsRemoteRunConfiguration" debuggerKind="USER_GDB" userDebuggerPath="\\wsl.localhost\Ubuntu-26.04\usr\bin\gdb-multiarch" remoteCommand="192.168.3.94:2345" symbolFile="/home/shalex/dev/projects/rust-sandbox/target/aarch64-unknown-linux-gnu/debug/rust-sandbox" sysroot="">
+    <pathMapping remote=":/home/shalex/dev/projects/rust-sandbox" local="$PROJECT_DIR$" />
+    <method v="2">
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="cross-dev" run_configuration_type="CargoCommandRunConfiguration" run_configuration_target="RsBuildProfile:dev" />
+      <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_External Tools_Deploy &amp; Run GDB Server" />
+    </method>
+  </configuration>
+</component>
