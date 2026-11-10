@@ -5,6 +5,12 @@ pub struct UsbDevice {
     name: String,
 }
 
+impl Default for UsbDevice {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl UsbDevice {
     pub fn new() -> Self {
         Self {

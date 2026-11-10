@@ -1,0 +1,65 @@
+openapi: 3.1.1
+info:
+  title: Device Orchestrator API
+  version: 0.1.0
+  description: Routes device requests to configured device services.
+servers:
+  - url: http://127.0.0.1:3001
+paths:
+  /devices/{id}/name:
+    get:
+      operationId: getDeviceNameById
+      summary: Get a registered device's name
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[A-Za-z0-9_-]+$'
+          example: local
+      responses:
+        '200':
+          description: The selected device's name.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [ name ]
+                properties:
+                  name:
+                    type: string
+              example:
+                name: Fake Device
+        '404':
+          description: Unknown device ID.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: unknown device
+        '502':
+          description: Downstream connection, status, protocol, response-size, or JSON error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: device service request failed
+        '504':
+          description: Downstream call exceeded five seconds.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: device service timed out
+components:
+  schemas:
+    Error:
+      type: object
+      required: [ error ]
+      properties:
+        error:
+          type: string

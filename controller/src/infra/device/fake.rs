@@ -5,6 +5,12 @@ pub struct FakeDevice {
     name: String,
 }
 
+impl Default for FakeDevice {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl FakeDevice {
     pub fn new() -> Self {
         Self {
