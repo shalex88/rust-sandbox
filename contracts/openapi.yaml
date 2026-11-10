@@ -1,0 +1,35 @@
+openapi: 3.1.1
+info:
+  title: Device Service API
+  version: 0.1.0
+  description: REST API for retrieving information from the connected device.
+servers:
+  - url: http://127.0.0.1:3000
+    description: Local service
+paths:
+  /device/name:
+    get:
+      operationId: getDeviceName
+      summary: Get the device name
+      description: Returns the name provided by the device implementation.
+      responses:
+        '200':
+          description: The device name was retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceNameResponse'
+              example:
+                name: Fake Device
+components:
+  schemas:
+    DeviceNameResponse:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: The device name.
+          examples:
+            - Fake Device
